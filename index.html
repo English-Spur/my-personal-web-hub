@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Web Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        /* Fixed Top Header / Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #1e293b;
+            border-bottom: 2px solid #38bdf8;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #38bdf8;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            color: #ffffff;
+            background: #0284c7;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #0369a1;
+        }
+
+        /* Main Container */
+        .main-container {
+            margin-top: 70px;
+            height: calc(100vh - 70px);
+            width: 100%;
+            position: relative;
+        }
+
+        /* Dashboard Grid View */
+        .dashboard-view {
+            height: 100%;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background-color: #1e293b;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-container input:focus {
+            border-color: #38bdf8;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Neutral Individual Card System */
+        .card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.1);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: #f1f5f9;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        /* iFrame App Container */
+        .app-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Header / Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo" onclick="openHome()">🎨 Shovan Kapri's Hub</div>
+        <button class="nav-btn" onclick="openHome()">🏠 Home / Dashboard</button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        
+        <!-- Dashboard Grid View -->
+        <div class="dashboard-view" id="dashboardView">
+            <header>
+                <h1>Shovan Kapri's Favourite Apps & Web Pages</h1>
+                <p> শোভন কাপড়ীর তৈরি অথবা সংগৃহীত অ্যাপ ও ওয়েব পেজের লিঙ্ক এক জায়গায় </p>
+            </header>
+
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search apps or links..." onkeyup="filterProjects()">
+            </div>
+
+            <!-- ALL CARDS CONTAINER -->
+            <div class="grid-container" id="projectGrid">
+
+                <!-- ==================== PLACEHEADER CARD START ==================== -->
+                <!-- নতুন লিঙ্ক যোগ করতে জাস্ট এই নিচের ৩ চরণের কার্ডটি কপি এবং পেস্ট করো -->
+                
+                <div class="card" onclick="loadApp('https://english-spur.github.io/Official-Website/')">
+                    <div>
+                        <h2>🌍 ENGLISH SPUR OFFICIAL WEBSITE</h2>
+                        <p>Official Webste link of English Spur Online English Training Academy</p>
+<p> <strong>💚 Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+                <div class="card" onclick="loadApp('https://english-spur.github.io/verbapp/')">
+                    <div>
+                        <h2>🥇 UNIQUE VERB LEARNING WEB APP</h2>
+                        <p>Smart system for generating all 5 forms of verbs with Bengali pronunciations</p>
+<p> <strong>💚 Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+                <div class="card" onclick="loadApp('https://english-spur.github.io/OPDMR/')">
+                    <div>
+                        <h2>🧩 OPDMR WEB APP</h2>
+                        <p>Smart One Click Online Product's DMR Generator</p>
+<p> <strong>💚 Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+                <div class="card" onclick="loadApp('https://wikipedia.org')">
+                    <div>
+                        <h2>✨ WIKIPEDIA WEB PAGE</h2>
+                        <p>Quick access to documentation and knowledge tools.</p>
+<p> <strong>🟡 Not Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+<div class="card" onclick="loadApp('https://english-spur.github.io/L-and-W/')">
+                    <div>
+                        <h2>📢 LISTEN AND WRITE WEB APP</h2>
+                        <p>This Web App is useful for developing Listening Skill </p>
+<p> <strong>💚 Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+   <div class="card" onclick="loadApp('https://english-spur.github.io/Word-Safari/')">
+                    <div>
+                        <h2>🤴 WORD SAFARI ‍WEB APP</h2>
+                        <p>Explore new words, play fun games, and read exciting stories!</p>
+<p> <strong>💚 Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+   <div class="card" onclick="loadApp('https://socialregistry.wb.gov.in/citizen/#/')">
+                    <div>
+                        <h2>🎭 ANNAPURNA YOJONA PORTAL</h2>
+                        <p>Annapurna Yojona Portal | Apply Online | Check Status & Updates</p>
+<p> <strong>🟡 Not Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+   <div class="card" onclick="window.open('https://www.facebook.com/ami.sovan.92')">
+                    <div>
+                        <h2>⚡ SHOVAN KAPRI FACEBOOK PROFILE</h2>
+                        <p>Shovan Kapri's Official Facebook Profile</p>
+<p> <strong>💚 Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+
+   <div class="card" onclick="window.open('https://www.youtube.com/@SOVANKAPRI123')">
+                    <div>
+                        <h2>🎈 SHOVAN KAPRI OFFICIAL YOUTUBE CHANNEL</h2>
+                        <p>Shovan Kapri Offical Youtube Channel</p>
+<p> <strong>💚 Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+   <div class="card" onclick="window.open('https://radio.garden/search')">
+                    <div>
+                        <h2>🎵 RADIO GARDEN WORLD RADIO STATION</h2>
+                        <p>Enjoy Free Radio Stations around the globe!</p>
+<p> <strong>🟡 Not Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+   <div class="card" onclick="loadApp('https://basicenglishspeaking.com/')">
+                    <div>
+                        <h2>🎉 BASIC ENGLISH WEB PAGE</h2>
+                        <p>Enjoy Free English learning resources!</p>
+<p> <strong>🟡 Not Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+
+   <div class="card" onclick="window.open('https://sovietbooksinbengali.blogspot.com/')">
+                    <div>
+                        <h2>🎁 SOVIET BOOKS IN BENGALI WEB PAGE</h2>
+                        <p>Enjoy Free Soviet Books in Bengali!</p>
+<p> <strong>🟡 Not Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+     <div class="card" onclick="loadApp('https://english-spur.github.io/Word-Puzzle/')">
+                    <div>
+                        <h2>🧩 WORD PUZZLE</h2>
+                        <p>Try to build sentences from the puzzled words.</p>
+<p> <strong>💚 Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+<div class="card" onclick="window.open('https://tvgarden.world/tv/in/Z3ikslJzUV8EMT')">
+                    <div>
+                        <h2>🎁TV GARDEN FREE TV</h2>
+                        <p>Enjoy Free Tv chammels</p>
+<p> <strong>🟡 Not Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+
+                <!-- 
+                ===================================================================
+                HOW TO ADD A NEW ITEM (নিয়ম):
+                নিচের কোডটুকু কপি করো এবং এখানে পেস্ট করে তোমার লিঙ্ক, টাইটেল ও বিবরণ বসিয়ে দাও:
+
+                <div class="card" onclick="loadApp('তোমার_লিঙ্ক_এখানে_দাও')">
+                    <div>
+                        <h2>প্রজেক্ট বা অ্যাপের নাম</h2>
+                        <p>ছোট বিবরণ বা বিবরণী এখানে লেখো</p>
+<p> <strong>Owned By Shovan Kapri</strong></p>
+                    </div>
+                    <div class="card-footer">Open App &rarr;</div>
+                </div>
+                ===================================================================
+                -->
+
+                <!-- ===================== PLACEHEADER CARD END ===================== -->
+
+            </div>
+        </div>
+
+        <!-- Embedded Viewer Frame -->
+        <iframe class="app-frame" id="appFrame" src=""></iframe>
+
+    </div>
+
+    <script>
+        const dashboardView = document.getElementById('dashboardView');
+        const appFrame = document.getElementById('appFrame');
+
+        // Function to launch app inside iFrame
+        function loadApp(url) {
+            dashboardView.style.display = 'none';
+            appFrame.style.display = 'block';
+            appFrame.src = url;
+        }
+
+        // Function to return back to Main Dashboard
+        function openHome() {
+            appFrame.style.display = 'none';
+            appFrame.src = ''; 
+            dashboardView.style.display = 'block';
+        }
+
+        // Universal Search Filter
+        function filterProjects() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.getElementsByClassName('card');
+
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+                const desc = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+
+                if (title.includes(input) || desc.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
